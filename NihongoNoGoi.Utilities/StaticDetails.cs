@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NihongoNoGoi.Utilities
 {
-    public class StaticDetails
+    public static class StaticDetails
     {
 
     }
