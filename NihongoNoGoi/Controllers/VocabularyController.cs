@@ -6,14 +6,14 @@ namespace NihongoNoGoi.Controllers
 {
     public class VocabularyController : Controller
     {
-        private readonly IVocabularyRepository _db;
-        public VocabularyController(IVocabularyRepository db)
+        private readonly IUnitOfWork _db;
+        public VocabularyController(IUnitOfWork db)
         {
             _db = db;
         }
         public IActionResult Index()
         {
-            IEnumerable<Vocabulary> Vocabulary = _db.GetAll();
+            IEnumerable<Vocabulary> Vocabulary = _db.VocabularyRepository.GetAll();
             return View(Vocabulary);
         }
 
@@ -24,7 +24,7 @@ namespace NihongoNoGoi.Controllers
 
         public IActionResult Remove(int id)
         {
-            Vocabulary word = _db.GetFirstOrDefault(u => u.Id == id);
+            Vocabulary word = _db.VocabularyRepository.GetFirstOrDefault(u => u.Id == id);
             return View(word);
         }
 
@@ -32,12 +32,12 @@ namespace NihongoNoGoi.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult RemovePOST(int? id)
         {
-            Vocabulary word = _db.GetFirstOrDefault(u => u.Id == id);
+            Vocabulary word = _db.VocabularyRepository.GetFirstOrDefault(u => u.Id == id);
             if(word == null)
             {
                 return NotFound();
             }
-            _db.Remove(word);
+            _db.VocabularyRepository.Remove(word);
             _db.Save();
             return RedirectToAction("Index");
         }

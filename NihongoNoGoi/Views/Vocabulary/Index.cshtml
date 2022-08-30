@@ -1,7 +1,28 @@
-﻿
+﻿@model IEnumerable<NihongoNoGoi.Models.Vocabulary>
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
+<table>
+    <thead>
+        <tr>
+            <td>Word</td>
+            <td>Reading</td>
+            <td>Meaning</td>
+            <td>JLPT Level</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var entry in Model)
+        {
+            <tr>
+                <td>@entry.Word</td>
+                <td>@entry.Reading</td>
+                <td>@entry.Meaning</td>
+                <td>@entry.JLPTLevel</td>
+            </tr>
+        }
+    </tbody>
+</table>
 

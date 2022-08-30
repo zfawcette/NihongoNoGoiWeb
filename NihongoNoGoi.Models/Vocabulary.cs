@@ -12,11 +12,12 @@ namespace NihongoNoGoi.Models
         [Key]
         public int Id { get; set; }
         public string Word { get; set; }
-        public string Answer { get; set; }
+        public string Reading { get; set; }
+        public string Meaning { get; set; }
+        public int AppLevel { get; set; }
         public int JLPTLevel { get; set; }
         public int SRSLevel { get; set; }
         public DateTime UnlockedDate { get; set; }
         public DateTime NextReviewDate { get; set; }
-        //public Category Category { get; set; }
     }
 }
